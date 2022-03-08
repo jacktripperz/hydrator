@@ -78,7 +78,7 @@ Open up the `hydrate.py` and search for the section where the `cycle` is defined
 One cycle includes 3 inputs:
 - Id (1-indexed, meaning that the first cycle should always start with 1)
 - Type (either use `hydrate` or `claim`)
-- MinimumBnb (you might be able to hydrate because 24h has past but you only want to hydrate, when you have a minimum DRIP of this value)
+- MinimumDrip (you might be able to hydrate because 24h has past but you only want to hydrate, when you have a minimum DRIP of this value)
 
 Each cycle is defined by one item. Set as many items you want - just make sure to increment the Id of each item. When the cycle ends, it starts again from the top.
 The following is an example of a cycle:
