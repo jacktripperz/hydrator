@@ -22,7 +22,7 @@ certificate of deposit. You can participate by purchasing drip from the [swap pa
 It is necessary, depending on your deposit size, to compound up to several times a day. The purpose of this code
 is to do this automatically for you so you don't have to. 
 
-## Setup Autohydrater
+## Setup
 
 This code was specifically written to be as secure as possible, since signing transactions requires the use of
 a wallet's private key. It's imparative you use the encryption outlined in the code to best protect yourself
@@ -61,7 +61,7 @@ $ python -m pip install python-dotenv
 
 8. Open the `hydrate.py` file and replace the string stored in `wallet_public_addr` with your own public wallet.
 
-## Using the Autohydrater
+## Usage
 
 In a terminal window, navigate to the location where you saved all the files. Run the `hydrate.py` file.
 
@@ -71,6 +71,25 @@ $ python hydrate.py
 
 This terminal window will always need to remain open for the autohydrater to function. If the terminal window closes, just execute
 `python hydrate.py` again.
+
+## Cycle settings
+The script includes a cycle-handler. This means that you can determine a cycle on when to `hydrate` and when to `claim`.
+Open up the `hydrate.py` and search for the section where the `cycle` is defined - it's around line 33.
+One cycle includes 3 inputs:
+- Id (1-indexed, meaning that the first cycle should always start with 1)
+- Type (either use `hydrate` or `claim`)
+- MinimumBnb (you might be able to hydrate because 24h has past but you only want to hydrate, when you have a minimum DRIP of this value)
+
+Each cycle is defined by one item. Set as many items you want - just make sure to increment the Id of each item. When the cycle ends, it starts again from the top.
+The following is an example of a cycle:
+```py
+cycle.append( cycleItem(1, "hydrate", 0.04) )
+cycle.append( cycleItem(2, "hydrate", 0.04) )
+cycle.append( cycleItem(3, "hydrate", 0.04) )
+cycle.append( cycleItem(4, "claim", 0.04) )
+```
+
+Defaults for the cycle is only to `hydrate`.
 
 # Donations
 If this autohydrater helps you, consider supporting me by sending me an airdrop: 
