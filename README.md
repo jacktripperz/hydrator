@@ -72,6 +72,7 @@ $ python hydrate.py
 This terminal window will always need to remain open for the autohydrater to function. If the terminal window closes, just execute
 `python hydrate.py` again.
 
+# Donations
 If this autohydrater helps you, consider supporting me by sending me an airdrop: 
 - **wallet:** *0x361472B5784e83fBF779b015f75ea0722741f304*
 
