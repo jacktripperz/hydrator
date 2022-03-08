@@ -79,7 +79,7 @@ If this autohydrater helps you, consider supporting me by sending me an airdrop:
 Or using my buddy referral code:
 - [DRIP Faucet](https://drip.community/faucet?buddy=0x361472B5784e83fBF779b015f75ea0722741f304)
 
-### Other projects to take a look at:
+# Other projects to take a look at:
 - [My DiamondTeam v2](https://mydiamondteam.online/v2/?ref=0x361472b5784e83fbf779b015f75ea0722741f304) - 1.5% per day - no decay, 5% reinvest bonus! Get the [auto-script here](https://github.com/jacktripperz/diamond_team)
 - [Animal Farm, Garden](https://theanimal.farm/referrals/0x361472B5784e83fBF779b015f75ea0722741f304) - 3% per day! Get the [auto-script here](https://github.com/jacktripperz/planter)
 - [Animal Farm, PiggyBank](https://theanimal.farm/piggybank/0x361472B5784e83fBF779b015f75ea0722741f304) - 3% per day + huge TimeLocking bonuses! Get the [auto-script here](https://github.com/jacktripperz/piggybanker)
