@@ -75,7 +75,7 @@ This terminal window will always need to remain open for the autohydrater to fun
 
 ## Cycle settings
 The script includes a cycle-handler. This means that you can determine a cycle on when to `hydrate` and when to `claim`.
-Open up the `hydrate.py` and search for the section where the `cycle` is defined - it's around line 33.
+Open up the `hydrate.py` and search for the section where the `cycle` is defined - it's around line 32.
 One cycle includes 3 inputs:
 - Id (1-indexed, meaning that the first cycle should always start with 1)
 - Type (either use `hydrate` or `claim`)
@@ -91,6 +91,10 @@ cycle.append( cycleItem(4, "claim", 0.04) )
 ```
 
 Defaults for the cycle is only to `hydrate`.
+
+## Optimal hydration
+A calculation for the most optimal hydration amount is added. If your minimum cycle amount is lower than the optimal amount, the script will prioritize the optimal amount.
+This features is on by default but can be switched off by setting the `useOptimalHydrateAmount` property to `False`. The `useOptimalHydrateAmount` property is found in one of in line 12 of the `hydrate.py` file.
 
 # Donations
 If this autohydrater helps you, consider supporting me by sending me an airdrop: 
