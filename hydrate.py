@@ -30,12 +30,6 @@ class cycleItem:
 # cycle types are "hydrate" or "claim"
 cycle = [] 
 cycle.append( cycleItem(1, "hydrate", 0.04) )
-cycle.append( cycleItem(2, "hydrate", 0.04) )
-cycle.append( cycleItem(3, "hydrate", 0.04) )
-cycle.append( cycleItem(4, "hydrate", 0.04) )
-cycle.append( cycleItem(5, "hydrate", 0.04) )
-cycle.append( cycleItem(6, "hydrate", 0.04) )
-cycle.append( cycleItem(7, "hydrate", 0.04) )
 nextCycleId = 1
 
 def deposit_amount(addr):
@@ -102,14 +96,28 @@ while True:
 
     dripPerDay = deposit * 0.01
     dripPerSecond = dripPerDay / 24 / 60 / 60
-    secondsUntilHydration = (cycleMinimumDrip - avail) / dripPerSecond
     
+    if deposit < 5:
+        optimal_hydrate_amount = deposit * .12
+    elif deposit < 10:
+        optimal_hydrate_amount = deposit * .05
+    elif deposit < 25:
+        optimal_hydrate_amount = deposit * .025
+    elif deposit < 100:
+        optimal_hydrate_amount = deposit * .015
+    elif deposit < 5000:
+        optimal_hydrate_amount = deposit * .01
+    else:
+        optimal_hydrate_amount = deposit * .005
+
+    secondsUntilHydration = (optimal_hydrate_amount - avail) / dripPerSecond
+
     sleep = loop_sleep_seconds
 
     if secondsUntilHydration > start_polling_threshold_in_seconds:
         sleep = secondsUntilHydration - start_polling_threshold_in_seconds
     
-    if avail > cycleMinimumDrip:
+    if avail > cycleMinimumDrip and avail > optimal_hydrate_amount:
         if nextCycleType == "hydrate":
             hydrate()
         if nextCycleType == "claim":
@@ -137,6 +145,7 @@ while True:
         print("********** STATS *******")
         print(f"{timestampStr} Deposit: {deposit:.3f}")
         print(f"{timestampStr} Minimum hydrate amount: {cycleMinimumDrip:.3f}")
+        print(f"{timestampStr} Optimal hydrate amount: {optimal_hydrate_amount:.3f}")
         print(f"{timestampStr} Available to hydrate: {avail:.3f}")
         print(f"{timestampStr} Drip per second: {dripPerSecond:.8f}")
         print(f"{timestampStr} Until next hydration: {buildTimer(secondsUntilHydration)}")
