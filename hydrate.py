@@ -9,6 +9,7 @@ drip_contract_addr = "0xFFE811714ab35360b67eE195acE7C10D93f89D8C"
 wallet_public_addr = "0x361472B5784e83fBF779b015f75ea0722741f304"
 loop_sleep_seconds = 60
 start_polling_threshold_in_seconds = 60*10
+useOptimalHydrateAmount = True
 
 # load private key
 wallet_private_key = open('key.txt', "r").readline()
@@ -110,14 +111,23 @@ while True:
     else:
         optimal_hydrate_amount = deposit * .005
 
-    secondsUntilHydration = (optimal_hydrate_amount - avail) / dripPerSecond
+    hasOptimalAmount = False
+    if useOptimalHydrateAmount == False:
+        hasOptimalAmount = True
+    else:
+        hasOptimalAmount = avail > optimal_hydrate_amount
+
+    if useOptimalHydrateAmount:
+        secondsUntilHydration = (optimal_hydrate_amount - avail) / dripPerSecond
+    else:
+        secondsUntilHydration = (cycleMinimumDrip - avail) / dripPerSecond
 
     sleep = loop_sleep_seconds
 
     if secondsUntilHydration > start_polling_threshold_in_seconds:
         sleep = secondsUntilHydration - start_polling_threshold_in_seconds
-    
-    if avail > cycleMinimumDrip and avail > optimal_hydrate_amount:
+ 
+    if avail > cycleMinimumDrip and hasOptimalAmount:
         if nextCycleType == "hydrate":
             hydrate()
         if nextCycleType == "claim":
