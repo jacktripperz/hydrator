@@ -58,7 +58,7 @@ $ python -m pip install python-dotenv
 ```
 
 6. Take the output value from the last line `encMessage.decode()`, create a file called `key.txt` and save the output in the file. 
-7. Save the `key.text` to the root of the project.
+7. Save the `key.txt` to the root of the project.
 
 8. Open the `hydrate.py` file and replace the string stored in `wallet_public_addr` with your own public wallet.
 
