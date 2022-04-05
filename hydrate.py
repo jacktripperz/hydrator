@@ -12,7 +12,7 @@ start_polling_threshold_in_seconds = 60*10
 useOptimalHydrateAmount = True
 
 # load private key
-wallet_private_key = open('key.txt', "r").readline()
+wallet_private_key = open('key.txt', "r").readline().strip().strip('\'').strip('\"').strip()
 
 # load abi
 f = open('faucet_abi.json')
