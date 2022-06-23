@@ -1,3 +1,5 @@
+# OUTDATED - DO NOT USE !!
+
 # Drip Intro
 
 Drip is a deflationary daily ROI platform that allows
